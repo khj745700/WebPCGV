@@ -21,5 +21,5 @@ const SeatSchema = new Schema(
     }
 )
 
-const seat = model('seat', SeatSchema);
-module.exports = { seat };
+const Seat = model('seat', SeatSchema);
+module.exports = { Seat };

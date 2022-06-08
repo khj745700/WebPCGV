@@ -17,5 +17,5 @@ const ReservationSchema = new Schema(
     {timestamps: { createdAt: 'created_date'}}
 );
 
-const reservation = model('reservation', ReservationSchema);
-module.exports = { reservation };
+const Reservation = model('reservation', ReservationSchema);
+module.exports = { Reservation };

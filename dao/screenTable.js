@@ -28,5 +28,5 @@ const ScreenTableSchema = new Schema(
     }
 )
 
-const screenTable = model('screenTable',ScreenTableSchema);
-module.exports = { screenTable };
+const ScreenTable = model('screenTable',ScreenTableSchema);
+module.exports = { ScreenTable };

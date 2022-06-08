@@ -26,5 +26,5 @@ const commentSchema = new Schema(
     timestamps: { createdAt : 'created_date'}
     });
 
-const comment = model("comment", commentSchema);
-module.exports = { comment };
+const Comment = model("comment", commentSchema);
+module.exports = { Comment };

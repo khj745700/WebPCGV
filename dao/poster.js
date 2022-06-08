@@ -14,5 +14,5 @@ const PosterSchema = new Schema(
         }
     }
 );
-const poster = model('poster', PosterSchema);
-module.exports = { poster };
+const Poster = model('poster', PosterSchema);
+module.exports = { Poster };

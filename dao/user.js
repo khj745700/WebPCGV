@@ -5,7 +5,8 @@ const UserSchema = new Schema(
     {
         login_id: {
             type: String,
-            required: true
+            required: true,
+            unique : true
         },
         password: {
             type: String,
@@ -15,5 +16,5 @@ const UserSchema = new Schema(
     {timestamps: {createdAt:'created_date'}}
 )
 
-const user = model('user' ,UserSchema);
-module.exports = { user };
+const User = model('user' ,UserSchema);
+module.exports = { User };

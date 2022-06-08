@@ -3,6 +3,13 @@ const { Types, Schema, model } = mongoose;
 
 const ScreenSchema = new Schema(
     {
+        theater_id: {
+            type: Types.ObjectId,
+            required: true,
+            ref: 'theater'
+        }
+
+        ,
         screen_num: {
             type: Number,
             required: true
@@ -26,5 +33,5 @@ const ScreenSchema = new Schema(
     }
 )
 
-const screen = model('screen', ScreenSchema);
-module.exports = { screen };
+const Screen = model('screen', ScreenSchema);
+module.exports = { Screen };

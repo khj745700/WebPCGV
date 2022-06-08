@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const { Types, Schema, model } = mongoose;
 
-const ReservationSchema = new Schema(
+const ReservationSeatSchema = new Schema(
     {
         user_id:{
           type : Types.ObjectId,
@@ -12,6 +12,10 @@ const ReservationSchema = new Schema(
             type : Types.ObjectId,
             required: true,
             ref: 'screenTable'
+        },
+        isReservationable:{
+            type : Boolean,
+            default : true
         }
     },
     {
@@ -19,6 +23,6 @@ const ReservationSchema = new Schema(
     }
 )
 
-const reservation = model('reservation', ReservationSchema);
+const ReservationSeat = model('reservationSeat', ReservationSeatSchema);
 
-module.exports = { reservation };
+module.exports = { ReservationSeat };
