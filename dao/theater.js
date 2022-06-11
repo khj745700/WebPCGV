@@ -6,7 +6,13 @@ const TheaterSchema = new Schema(
         name:{
             type: String,
             required: true
-        }
+        },
+        screens:[
+            {
+                type: Types.ObjectId,
+                ref: 'screen'
+            }
+        ]
     }
 )
 

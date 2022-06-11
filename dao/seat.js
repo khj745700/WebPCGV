@@ -17,6 +17,10 @@ const SeatSchema = new Schema(
         },
         reason: {
             type: String
+        },
+        reservation_seats:{
+            type: Types.ObjectId,
+            ref: 'reservationSeat'
         }
     }
 )

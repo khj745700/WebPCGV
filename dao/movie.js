@@ -12,7 +12,7 @@ const MovieSchema = new Schema(
             required: true
         },
         open_date: {
-            type: Types.Date,
+            type: Date,
             required: true,
         },
         director: {
@@ -42,8 +42,15 @@ const MovieSchema = new Schema(
         genre: {
             type: String,
             required: true
-        }
-
+        },
+        image: {
+            type: String,
+            required: true
+        },
+        comments: [{
+            type: Types.ObjectId,
+            ref: 'comment'
+        }]
     }
 )
 

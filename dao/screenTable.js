@@ -24,7 +24,11 @@ const ScreenTableSchema = new Schema(
         reservationable_seat_num: {
             type: Number,
             required: true
-        }
+        },
+        reservations:[{
+            type: Types.ObjectId,
+            ref: 'reservation'
+        }]
     }
 )
 

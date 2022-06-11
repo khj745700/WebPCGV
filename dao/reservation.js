@@ -12,7 +12,11 @@ const ReservationSchema = new Schema(
             type: Types.ObjectId,
             required: true,
             ref: 'screenTable'
-        }
+        },
+        reservation_seats:[{
+            type:Types.ObjectId,
+            ref: 'reservationSeat'
+        }]
     },
     {timestamps: { createdAt: 'created_date'}}
 );

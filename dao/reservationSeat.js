@@ -3,10 +3,13 @@ const { Types, Schema, model } = mongoose;
 
 const ReservationSeatSchema = new Schema(
     {
-        user_id:{
-          type : Types.ObjectId,
-          required: true,
-          ref: 'user'
+        seat_id:{
+            type:Types.ObjectId,
+            ref: 'seat'
+        },
+        reservation_id:{
+            type:Types.ObjectId,
+            ref: 'reservation'
         },
         screenTable_id:{
             type : Types.ObjectId,

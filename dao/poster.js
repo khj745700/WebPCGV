@@ -9,8 +9,8 @@ const PosterSchema = new Schema(
             ref : 'movie'
         },
         image:{
-            type: Buffer,
-            contentType: String
+            type: String,
+            required: true
         }
     }
 );

@@ -11,6 +11,14 @@ const UserSchema = new Schema(
         password: {
             type: String,
             requried: true
+        },
+        comments:{
+            type: Types.ObjectId,
+            ref: 'comment'
+        },
+        reservations:{
+            type: Types.ObjectId,
+            ref: 'reservation'
         }
     },
     {timestamps: {createdAt:'created_date'}}

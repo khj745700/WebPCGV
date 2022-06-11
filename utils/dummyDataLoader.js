@@ -8,12 +8,100 @@ const { ScreenTable } = require('../dao/screenTable');
 const { Seat } = require('../dao/seat');
 const { User } = require('../dao/user');
 const { Theater } = require('../dao/theater');
+const {HashMap} = require('hashmap');
+
+const userData =  new HashMap();
+const movieData = new HashMap();
+const theaterData = new HashMap();
+const screenData = new HashMap();
+const screenTableData = new HashMap();
+const commentData = new HashMap();
+const posterData = new HashMap();
+const reservationData = new HashMap();
+const reservationSeatData = new HashMap();
+const seatData = new HashMap();
+const moment = require('moment');
 
 async function dummyDataLoader() {
+    await loadMovieData();
+
+}
+async function loadUserData(){
 
 }
 
-async function loadUserData(){
+async function loadMovieData() {
+    const MovieData1 = await saveMovieDataIfNotFound("범죄도시", 106, moment.utc('2022-05-18'), "이상용", 99, 17.9, "마동석", `“느낌 오지? 이 놈 잡아야 하는 거”
+
+가리봉동 소탕작전 후 4년 뒤,
+금천서 강력반은 베트남으로 도주한 용의자를 인도받아 오라는 미션을 받는다.
+
+괴물형사 ‘마석도’(마동석)와 ‘전일만’(최귀화) 반장은 현지 용의자에게서 수상함을 느끼고,
+그의 뒤에 무자비한 악행을 벌이는 ‘강해상’(손석구)이 있음을 알게 된다.
+
+‘마석도’와 금천서 강력반은 한국과 베트남을 오가며
+ 역대급 범죄를 저지르는 ‘강해상’을 본격적으로 쫓기 시작하는데...
+
+나쁜 놈들 잡는 데 국경 없다!
+통쾌하고 화끈한 범죄 소탕 작전이 다시 펼쳐진다! `, 15, "범죄, 액션", "범죄도시Poster.png");
+
+    const MovieData2 = await saveMovieDataIfNotFound("브로커", 129, moment.utc('2022-06-08'), "고레에다 히로카즈", 83, 26.2, "송강호, 강동원, 배두나, 이지은, 이주영", `세탁소를 운영하지만 늘 빚에 시달리는 ‘상현’(송강호)과
+베이비 박스 시설에서 일하는 보육원 출신의 ‘동수’(강동원).
+거센 비가 내리는 어느 날 밤,
+그들은 베이비 박스에 놓인 한 아기를 몰래 데려간다.
+하지만 이튿날, 생각지 못하게 엄마 ‘소영’(이지은)이 아기 ‘우성’을 찾으러 돌아온다.
+아기가 사라진 것을 안 소영이 경찰에 신고하려 하자 솔직하게 털어놓는 두 사람.
+우성이를 잘 키울 적임자를 찾아 주기 위해서 그랬다는 변명이 기가 막히지만
+소영은 우성이의 새 부모를 찾는 여정에 상현, 동수와 함께하기로 한다.
+
+한편 이 모든 과정을 지켜본 형사 ‘수진’(배두나)과 후배 ‘이형사’(이주영).
+이들을 현행범으로 잡고 반 년째 이어온 수사를 마무리하기 위해 조용히 뒤를 쫓는다.
+
+베이비 박스,
+그곳에서 의도치 않게 만난 이들의
+예기치 못한 특별한 여정이 시작된다.`, 12, '드라마', '브로커Poster.png');
+
+    const MovieData3 = await saveMovieDataIfNotFound("쥬라기 월드-도미니언", 147, moment.utc('2022-06-01'), "콜린 트레보로우", 85, 13.8, "크리스 프랫, 브라이스 달라스 하워드, 드완다 와이즈, 로라 던, 제프 골드브럼, 샘 닐", ' ', 12, '액션, 어드밴쳐', '쥬라기월드Poster.img');
+    const MovieData4 = await saveMovieDataIfNotFound("극장판 포캣몬스터DP-기라티나와 하늘의 꽃다발 쉐이미", 96, moment.utc('2022-06-01'), "유야마 쿠니히코", 94, 10.9, "이선호, 김영선", `끝나지 않은 전설의 포켓몬들의 배틀로
+위험에 빠진 반전 세계와 현실 세계를 구하기 위해
+감사포켓몬 ‘쉐이미’와 ‘지우’, ‘피카츄’가 나서면서 시작되는 모험 이야기`, 0, '애니매이션', '기라티나Poster.png');
+
+    const MovieData5 = await saveMovieDataIfNotFound("닥터 스트레인지-대혼돈의 멀티버스", 126, moment.utc('2022-05-04'), "샘 레이미", 91, 0.3, " \n" +
+        "베네딕트 컴버배치 ,  엘리자베스 올슨 ,  베네딕트 웡 ,  레이첼 맥아담스 ,  치웨텔 에지오포 ,  소치틀 고메즈", `지금껏 본 적 없는 마블의 극한 상상력!
+5월, 광기의 멀티버스가 깨어난다!
+  
+끝없이 균열되는 차원과 뒤엉킨 시공간의 멀티버스가 열리며
+오랜 동료들, 그리고 차원을 넘어 들어온 새로운 존재들을 맞닥뜨리게 된 ‘닥터 스트레인지’.
+대혼돈 속, 그는 예상치 못한 극한의 적과 맞서 싸워야만 하는데….`, 12, '액션, 어드밴처, 환타지','닥터스트레인지Poster.png');
+
+    const MovieData6 = await saveMovieDataIfNotFound("그대가 조국", 124, moment.utc('2022-05-25'), '이승준', 97, 0.2, '조국', `대한민국은 민주공화국인가 검찰공화국인가
+검찰의 칼날이 그대에게 향하지 않는다고 자신할 수 있는가
+
+사냥이 시작됐다. 검찰이 던진 좌표를 따라 언론은 몰려들고 소문은 꼬리를 문다. 
+분노한 대중 앞에 검찰은 칼을 휘두른다. 저기 쫓기는 자는 누구인가. 
+그대가 아니라고 자신할 수 있는가.`, 12, '다큐멘터리', '그대가조국Poster.png');
+
+    const MovieData7 = await saveMovieDataIfNotFound("애프터 양", 96, moment.utc('2022-06-01'), '코코나다', 88,0.5, `
+콜린 파렐 ,  조디 터너 스미스 ,  저스틴 H.민 ,  말레아 엠마 찬드로위자야`, `함께 살던 안드로이드 인간 ‘양’이 어느 날 작동을 멈추자
+제이크 가족은 그를 수리할 방법을 찾는다.
+그러던 중, ‘양’에게서 특별한 메모리 뱅크를 발견하고
+그의 기억을 탐험하기 시작하는데…
+
+무엇을 남기고 싶었어, 양?`, 0, '드라마','애프터양Poster.png');
+
+    const MoviePoster8 = await saveMovieDataIfNotFound('윤시내가 사라졌다', 107, moment.utc('2022-06-08'), '김진화', 93, 0.1, '이주영, 오민애, 노재원, 김재화', `영원한 디바 ‘윤시내’가 고별 콘서트를 앞두고 사라졌다?!
+
+전설적인 가수의 실종으로 대한민국이 떠들썩한 가운데, 
+20년 간 이미테이션 가수 ‘연시내’로 활동해온순이(오민애)는 
+‘윤시내’와 함께할 뻔한 꿈의 무대도, 일자리도 잃어 좌절에 빠진다.
+한편, 사람들의 관심이 고픈 유튜버 ‘짱하’(이주영)는 
+라이브 방송 중 우연히 찍힌 엄마 ‘연시내’ 영상의 조회수가 떡상하자 
+대박 콘텐츠를 꿈꾸며 ‘윤시내’를 찾는 여정에 따라 나서는데…
+동료 가수 ‘운시내’(노재원)와 함께 가시내, 윤신애, 윤사내까지 모두 만나며 
+사라진 ‘윤시내’의 행방을 수소문하기 시작한 동상이몽 두 모녀는 과연 ‘진짜’를만날 수 있을까?`, 12, '드라마', '윤시내Poster.png');
+}
+
+async function loadPosterData(){
 
 }
 
@@ -33,7 +121,7 @@ async function saveUserDataIfNotFound(login_id, password){
     return user;
 }
 
-async function saveMovieDataIfNotFound(name, runtime, open_date, director, total_score, reservation_percent, actors, description, limit_age, genre){
+async function saveMovieDataIfNotFound(name, runtime, open_date, director, total_score, reservation_percent, actors, description, limit_age, genre, image){
     const findMovie = await Movie.findOne({name : name});
     if(findMovie != null){
         return findMovie;
@@ -48,13 +136,14 @@ async function saveMovieDataIfNotFound(name, runtime, open_date, director, total
         actors : actors,
         description : description,
         limit_age : limit_age,
-        genre : genre
+        genre : genre,
+        image : 'http://kitcapstone.iptime.org:3000/imgs/'+image
     });
     await movie.save();
     return movie;
 }
 
-async function savePosterDataIfNotFound(movie, image){
+async function savePosterDataIfNotFound(movie, imageName){
     const findPoster = await Poster.findOne({movie_id : movie})
     if(findPoster != null){
         return findPoster;
@@ -62,7 +151,7 @@ async function savePosterDataIfNotFound(movie, image){
     const poster = await new Poster(
         {
             movie_id : movie,
-            image : image
+            image : 'http://kitcapstone.iptime.org:3000/imgs/'+imageName
         }
     );
     await poster.save();
@@ -198,5 +287,6 @@ async function saveCommentDataIfNotFound(user, score, content, movie){
     });
     await comment.save();
     return comment;
-
 }
+
+module.exports = { dummyDataLoader };
