@@ -8,8 +8,7 @@ const EventSchema = new Schema(
             required: true
         },
         period: {
-            type: String,
-            required: true
+            type: String
         },
         image:{
             type: String,

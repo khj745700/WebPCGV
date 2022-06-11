@@ -8,7 +8,9 @@ const { ScreenTable } = require('../dao/screenTable');
 const { Seat } = require('../dao/seat');
 const { User } = require('../dao/user');
 const { Theater } = require('../dao/theater');
+const { Event } = require('../dao/event');
 const {HashMap} = require('hashmap');
+const moment = require('moment');
 
 const userData =  new HashMap();
 const movieData = new HashMap();
@@ -20,14 +22,21 @@ const posterData = new HashMap();
 const reservationData = new HashMap();
 const reservationSeatData = new HashMap();
 const seatData = new HashMap();
-const moment = require('moment');
+
 
 async function dummyDataLoader() {
     await loadMovieData();
-
+    await loadEventData();
 }
 async function loadUserData(){
 
+}
+
+async function loadEventData(){
+    saveEventDataIfNotFound("개봉작 사용 설명서", null, "개봉작event.png");
+    saveEventDataIfNotFound("[마녀2] CGV 필름마크", "2022.06.08~2022.07.03", "마녀2Event.png");
+    saveEventDataIfNotFound("[버즈 라이트이어] CGV 필름마크", "2022.06.08~2022.07.03", "버즈라이트이어event.png");
+    saveEventDataIfNotFound("[쥬라기월드:도미니언] 4DX 2주차 이벤트", "2022.06.03~2022.06.19", "쥬라기월드event.png");
 }
 
 async function loadMovieData() {
@@ -100,11 +109,6 @@ async function loadMovieData() {
 동료 가수 ‘운시내’(노재원)와 함께 가시내, 윤신애, 윤사내까지 모두 만나며 
 사라진 ‘윤시내’의 행방을 수소문하기 시작한 동상이몽 두 모녀는 과연 ‘진짜’를만날 수 있을까?`, 12, '드라마', '윤시내Poster.png');
 }
-
-async function loadPosterData(){
-
-}
-
 
 async function saveUserDataIfNotFound(login_id, password){
     const findUser = await User.findOne({login_id : login_id});
@@ -287,6 +291,26 @@ async function saveCommentDataIfNotFound(user, score, content, movie){
     });
     await comment.save();
     return comment;
+}
+
+async function saveEventDataIfNotFound(title, period, image){
+    const findEvent = await Event.findOne({
+        title: title
+    });
+
+    if(findEvent != null){
+        return findEvent;
+    }
+
+    const event = await new Event(
+        {
+            title: title,
+            period : period,
+            image: 'http://kitcapstone.iptime.org:3000/imgs/'+image
+        }
+    );
+    await event.save();
+    return event;
 }
 
 module.exports = { dummyDataLoader };
