@@ -20,7 +20,17 @@ const commentSchema = new Schema(
             type: Types.ObjectId,
             required: true,
             ref: 'movie'
-        }
+        },
+        likes:{
+            type: Number,
+            default: 0
+        },
+        commentLikes: [
+            {
+                type: Types.ObjectId,
+                ref: 'commentlike'
+            }
+        ]
     },
     {
     timestamps: { createdAt : 'created_date'}

@@ -31,7 +31,13 @@ const ScreenSchema = new Schema(
         seats: {
             type: Types.ObjectId,
             ref: 'seat'
-        }
+        },
+        screen_tables: [
+            {
+                type: Types.ObjectId,
+                ref: 'screenTable'
+            }
+        ]
     }
 )
 

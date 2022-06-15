@@ -8,18 +8,28 @@ const UserSchema = new Schema(
             required: true,
             unique : true
         },
+        name : {
+          type: String,
+          required: true
+        },
         password: {
             type: String,
-            requried: true
+            required: true
         },
-        comments:{
+        comments:[{
             type: Types.ObjectId,
             ref: 'comment'
-        },
+        }],
         reservations:{
             type: Types.ObjectId,
             ref: 'reservation'
-        }
+        },
+        commentLikes:[
+            {
+                type: Types.ObjectId,
+                ref: 'commentlike'
+            }
+        ]
     },
     {timestamps: {createdAt:'created_date'}}
 )
